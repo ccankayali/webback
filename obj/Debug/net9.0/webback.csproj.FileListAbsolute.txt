@@ -38,3 +38,9 @@ C:\Users\Can\Desktop\webback\obj\Debug\net9.0\refint\webback.dll
 C:\Users\Can\Desktop\webback\obj\Debug\net9.0\webback.pdb
 C:\Users\Can\Desktop\webback\obj\Debug\net9.0\webback.genruntimeconfig.cache
 C:\Users\Can\Desktop\webback\obj\Debug\net9.0\ref\webback.dll
+C:\Users\Can\Desktop\webback\bin\Debug\net9.0\DnsClient.dll
+C:\Users\Can\Desktop\webback\bin\Debug\net9.0\MongoDB.Bson.dll
+C:\Users\Can\Desktop\webback\bin\Debug\net9.0\MongoDB.Driver.dll
+C:\Users\Can\Desktop\webback\bin\Debug\net9.0\SharpCompress.dll
+C:\Users\Can\Desktop\webback\bin\Debug\net9.0\Snappier.dll
+C:\Users\Can\Desktop\webback\bin\Debug\net9.0\ZstdSharp.dll
