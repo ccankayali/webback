@@ -44,3 +44,11 @@ C:\Users\Can\Desktop\webback\bin\Debug\net9.0\MongoDB.Driver.dll
 C:\Users\Can\Desktop\webback\bin\Debug\net9.0\SharpCompress.dll
 C:\Users\Can\Desktop\webback\bin\Debug\net9.0\Snappier.dll
 C:\Users\Can\Desktop\webback\bin\Debug\net9.0\ZstdSharp.dll
+C:\Users\Can\Desktop\webback\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Can\Desktop\webback\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Can\Desktop\webback\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Can\Desktop\webback\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Can\Desktop\webback\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Can\Desktop\webback\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Can\Desktop\webback\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Can\Desktop\webback\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll

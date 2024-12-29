@@ -6,5 +6,6 @@ namespace YourNamespace.Models
         public required string Username { get; set; }
         public required string Email { get; set; }
         public required string PasswordHash { get; set; } // Store hashed passwords
+        public List<string> Roles { get; set; } = new List<string>(); // User roles
     }
 }
