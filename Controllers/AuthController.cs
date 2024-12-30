@@ -20,7 +20,7 @@ namespace YourNamespace.Controllers
         {
             try
             {
-                await _authService.RegisterAsync(request.Username, request.Email, request.Password);
+                _ = await _authService.RegisterAsync(request.Username, request.Email, request.Password, request.Role);
                 return Ok(new { message = "Registration successful" });
             }
             catch (Exception ex)
@@ -35,13 +35,20 @@ namespace YourNamespace.Controllers
             try
             {
                 var result = await _authService.LoginAsync(request.Email, request.Password);
-                return Ok(new { message = result });
+                return Ok(new
+                {
+                    message = result.Message,
+                    role = result.Role,
+                    sessionHash = result.SessionHash,
+                    userName = result.Username
+                });
             }
             catch (Exception ex)
             {
                 return Unauthorized(new { error = ex.Message });
             }
         }
+
     }
 
     public class RegisterRequest
@@ -49,6 +56,7 @@ namespace YourNamespace.Controllers
         public required string Username { get; set; }
         public required string Email { get; set; }
         public required string Password { get; set; }
+        public int Role { get; set; } = 3; // Default role: User
     }
 
     public class LoginRequest

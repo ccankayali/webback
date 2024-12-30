@@ -23,6 +23,7 @@ namespace YourNamespace.Repositories
             return await _users.Find(u => u.Email == email).FirstOrDefaultAsync();
         }
 
+
         public async Task AddUserAsync(User user)
         {
             await _users.InsertOneAsync(user);

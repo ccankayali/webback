@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("webback")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8d43614f77ed20a89bff7871bc0b0f048b707efc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+67a9f6365f249dd2b88bd69d573dfb2a7fbfe0b5")]
 [assembly: System.Reflection.AssemblyProductAttribute("webback")]
 [assembly: System.Reflection.AssemblyTitleAttribute("webback")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

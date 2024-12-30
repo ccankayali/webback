@@ -16,7 +16,7 @@ namespace YourNamespace.Services
             _userRepository = userRepository;
         }
 
-        public async Task<string> RegisterAsync(string username, string email, string password)
+        public async Task<string> RegisterAsync(string username, string email, string password, int role)
         {
             if (await _userRepository.GetByEmailAsync(email) != null)
                 throw new Exception("Email already exists.");
@@ -28,22 +28,31 @@ namespace YourNamespace.Services
                 Id = Guid.NewGuid().ToString(),
                 Username = username,
                 Email = email,
-                PasswordHash = passwordHash
+                PasswordHash = passwordHash,
+                Role = role
             };
 
             await _userRepository.AddUserAsync(user);
             return "User registered successfully.";
         }
-
-        public async Task<string> LoginAsync(string email, string password)
+        public async Task<LoginResult> LoginAsync(string email, string password)
         {
             var user = await _userRepository.GetByEmailAsync(email);
 
             if (user == null || !VerifyPassword(password, user.PasswordHash))
                 throw new Exception("Invalid email or password.");
 
-            return "Login successful.";
+            var randomHash = GenerateRandomHash(); // Generate a unique hash for this login session.
+
+            return new LoginResult
+            {
+                Message = "Login successful.",
+                Role = user.Role,
+                SessionHash = randomHash, // Include the random hash in the result.
+                Username = user.Username
+            };
         }
+
 
         private string HashPassword(string password)
         {
@@ -56,5 +65,14 @@ namespace YourNamespace.Services
         {
             return HashPassword(password) == hashedPassword;
         }
+
+        private string GenerateRandomHash()
+        {
+            using var rng = RandomNumberGenerator.Create();
+            var randomBytes = new byte[32];
+            rng.GetBytes(randomBytes);
+            return Convert.ToBase64String(randomBytes);
+        }
+
     }
 }
