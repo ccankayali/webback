@@ -23,12 +23,18 @@ public class CategoryService : ICategoryService
 
     public async Task<Category> CreateCategoryAsync(Category newCategory)
     {
-        // Kategoriyi kaydediyoruz
         var createdCategory = await _categoryRepository.CreateCategoryAsync(newCategory);
-
-        // Kategoriye ait ürünleri ayrı bir koleksiyona ekliyoruz
         await _categoryRepository.AddProductsToCategoryCollectionAsync(newCategory.CategoryName, newCategory.Products);
-
         return createdCategory;
+    }
+
+    public async Task<Category> UpdateCategoryAsync(string categoryName, Category updatedCategory)
+    {
+        return await _categoryRepository.UpdateCategoryAsync(categoryName, updatedCategory);
+    }
+
+    public async Task DeleteCategoryAsync(string categoryName)
+    {
+        await _categoryRepository.DeleteCategoryAsync(categoryName);
     }
 }

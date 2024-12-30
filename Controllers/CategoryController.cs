@@ -25,6 +25,7 @@ public class CategoryController : ControllerBase
         return Ok(categories);
     }
 
+    // Kategori adı ile kategoriyi alma
     [HttpGet("{CategoryName}")]
     public async Task<ActionResult<Category>> GetCategoryByName(string CategoryName)
     {
@@ -36,6 +37,7 @@ public class CategoryController : ControllerBase
         return Ok(category);
     }
 
+    // Kategori oluşturma
     [HttpPost]
     public async Task<ActionResult<Category>> CreateCategory([FromBody] Category newCategory)
     {
@@ -44,9 +46,41 @@ public class CategoryController : ControllerBase
             return BadRequest("Invalid category data.");
         }
 
-        // İstemci tarafından bir ID gönderilmişse, dikkate almayız.
         var createdCategory = await _categoryService.CreateCategoryAsync(newCategory);
 
         return CreatedAtAction(nameof(GetCategoryByName), new { CategoryName = createdCategory.CategoryName }, createdCategory);
+    }
+
+    // Kategori güncelleme
+    [HttpPut("{categoryName}")]
+    public async Task<ActionResult<Category>> UpdateCategory(string categoryName, [FromBody] Category updatedCategory)
+    {
+        if (updatedCategory == null || string.IsNullOrEmpty(updatedCategory.CategoryName))
+        {
+            return BadRequest("Invalid category data.");
+        }
+
+        var existingCategory = await _categoryService.GetCategoryByNameAsync(categoryName);
+        if (existingCategory == null)
+        {
+            return NotFound();
+        }
+
+        var updated = await _categoryService.UpdateCategoryAsync(categoryName, updatedCategory);
+        return Ok(updated);
+    }
+
+    // Kategori silme
+    [HttpDelete("{categoryName}")]
+    public async Task<ActionResult> DeleteCategory(string categoryName)
+    {
+        var category = await _categoryService.GetCategoryByNameAsync(categoryName);
+        if (category == null)
+        {
+            return NotFound();
+        }
+
+        await _categoryService.DeleteCategoryAsync(categoryName);
+        return NoContent();
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "njsSB+yv5H8=",
+  "dgSpecHash": "jWu4ayTeVXw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Can\\Desktop\\webback\\webback.csproj",
+  "projectFilePath": "C:\\Users\\Can\\Downloads\\webback\\webback.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Can\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\Can\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\9.0.0\\microsoft.aspnetcore.authentication.jwtbearer.9.0.0.nupkg.sha512",

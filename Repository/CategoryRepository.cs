@@ -12,21 +12,16 @@ public class CategoryRepository : ICategoryRepository
         _database = client.GetDatabase("CategoryDb");
     }
 
-    // Sayfalama ve _id dışlama
     public async Task<List<Category>> GetCategoriesAsync(int page, int pageSize)
     {
         var collection = _database.GetCollection<Category>("Categories");
 
-        // Pagination
         var skip = (page - 1) * pageSize;
-        var filter = Builders<Category>.Filter.Empty; // Tüm verileri alıyoruz
-        var projection = Builders<Category>.Projection.Exclude("_id"); // _id'yi dışlıyoruz
+        var filter = Builders<Category>.Filter.Empty;
 
-        // Sayfalama ve projeksiyon
         var categories = await collection.Find(filter)
             .Skip(skip)
             .Limit(pageSize)
-            .Project<Category>(projection)
             .ToListAsync();
 
         return categories;
@@ -36,9 +31,8 @@ public class CategoryRepository : ICategoryRepository
     {
         var collection = _database.GetCollection<Category>("Categories");
 
-        // Kategori adı ile sorgu yapıyoruz
         var filter = Builders<Category>.Filter.Eq(c => c.CategoryName, name);
-        var projection = Builders<Category>.Projection.Exclude("_id"); // _id'yi dışlıyoruz
+        var projection = Builders<Category>.Projection.Exclude("_id");
 
         return await collection.Find(filter).Project<Category>(projection).FirstOrDefaultAsync();
     }
@@ -47,16 +41,34 @@ public class CategoryRepository : ICategoryRepository
     {
         var collection = _database.GetCollection<Category>("Categories");
 
-        // Kategoriyi MongoDB'ye eklerken, _id'yi MongoDB otomatik olarak atar
         await collection.InsertOneAsync(newCategory);
         return newCategory;
+    }
+
+    public async Task<Category> UpdateCategoryAsync(string categoryName, Category updatedCategory)
+    {
+        var collection = _database.GetCollection<Category>("Categories");
+
+        var filter = Builders<Category>.Filter.Eq(c => c.CategoryName, categoryName);
+        var update = Builders<Category>.Update.Set(c => c.CategoryName, updatedCategory.CategoryName)
+                                                .Set(c => c.Products, updatedCategory.Products);
+
+        var result = await collection.FindOneAndUpdateAsync(filter, update);
+        return result;
+    }
+
+    public async Task DeleteCategoryAsync(string categoryName)
+    {
+        var collection = _database.GetCollection<Category>("Categories");
+
+        var filter = Builders<Category>.Filter.Eq(c => c.CategoryName, categoryName);
+        await collection.DeleteOneAsync(filter);
     }
 
     public async Task AddProductsToCategoryCollectionAsync(string categoryName, List<Product> products)
     {
         var categoryCollection = _database.GetCollection<Product>(categoryName);
 
-        // Ürünleri ilgili koleksiyona ekliyoruz
         await categoryCollection.InsertManyAsync(products);
     }
 }

@@ -2,15 +2,19 @@ using System.Text.Json.Serialization;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
 public class Category
 {
-    [BsonIgnore] // Bu, `_id` alanını yok sayar ve modelde yer almaz.
-    public ObjectId Id { get; set; }  // Bu alan MongoDB'den gelir ancak modelde kullanılmaz.
+    [BsonId]  // This tells MongoDB to use this property for the _id field
+    public ObjectId Id { get; set; }  // This will now map to MongoDB's _id field
     
-    public string CategoryName { get; set; } // Kategori adı
+    public string CategoryName { get; set; } // Category name
 
-    public List<Product> Products { get; set; } // Kategoriye ait ürünler
+    public List<Product> Products { get; set; } // List of products
 }
+
 
 public class Product
 {

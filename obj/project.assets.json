@@ -1912,11 +1912,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Can\\Desktop\\webback\\webback.csproj",
+      "projectUniqueName": "C:\\Users\\Can\\Downloads\\webback\\webback.csproj",
       "projectName": "webback",
-      "projectPath": "C:\\Users\\Can\\Desktop\\webback\\webback.csproj",
+      "projectPath": "C:\\Users\\Can\\Downloads\\webback\\webback.csproj",
       "packagesPath": "C:\\Users\\Can\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Can\\Desktop\\webback\\obj\\",
+      "outputPath": "C:\\Users\\Can\\Downloads\\webback\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Can\\AppData\\Roaming\\NuGet\\NuGet.Config"
