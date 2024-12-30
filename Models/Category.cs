@@ -7,20 +7,20 @@ using MongoDB.Bson.Serialization.Attributes;
 
 public class Category
 {
-    [BsonId]  // This tells MongoDB to use this property for the _id field
-    public ObjectId Id { get; set; }  // This will now map to MongoDB's _id field
+    [BsonId] 
+    public ObjectId Id { get; set; }
     
-    public string CategoryName { get; set; } // Category name
+    public required string CategoryName { get; set; } 
 
-    public List<Product> Products { get; set; } // List of products
+    public required List<Product> Products { get; set; } 
 }
 
 
 public class Product
 {
-    public string Id { get; set; } // MongoDB'den gelen _id string olarak alınır.
+    public required string Id { get; set; } 
 
-    public string Name { get; set; } // Ürün adı
+    public required string Name { get; set; } 
 
-    public decimal Price { get; set; } // Ürün fiyatı
+    public decimal Price { get; set; } 
 }

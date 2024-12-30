@@ -34,6 +34,10 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 
+// Order Service ve Repository Ekle
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IOrderService, OrderService>();
+
 // Controller'ları ve Swagger'ı Ekle
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
