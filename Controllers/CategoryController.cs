@@ -13,10 +13,11 @@ public class CategoryController : ControllerBase
         _categoryService = categoryService;
     }
 
+    // Sayfalama ile kategorileri alacak endpoint
     [HttpGet]
-    public async Task<ActionResult<List<Category>>> GetCategories()
+    public async Task<ActionResult<List<Category>>> GetCategories([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
     {
-        var categories = await _categoryService.GetCategoriesAsync();
+        var categories = await _categoryService.GetCategoriesAsync(page, pageSize);
         if (categories == null || categories.Count == 0)
         {
             return NotFound();
