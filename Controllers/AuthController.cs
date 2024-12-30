@@ -37,7 +37,7 @@ namespace YourNamespace.Controllers
                 var result = await _authService.LoginAsync(request.Email, request.Password);
                 return Ok(new
                 {
-                    message = result.Message,
+                    message = result.Message, 
                     role = result.Role,
                     sessionHash = result.SessionHash,
                     userName = result.Username
@@ -48,7 +48,6 @@ namespace YourNamespace.Controllers
                 return Unauthorized(new { error = ex.Message });
             }
         }
-
     }
 
     public class RegisterRequest
