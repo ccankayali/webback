@@ -1,5 +1,5 @@
 public class MongoDbSettings
 {
     public string ConnectionString { get; set; } = null!;
-    public string DatabaseName { get; set; } = "ornek";  // Veritabanı adı
+    public string DatabaseName { get; set; } = "Users";  // Veritabanı adı
 }

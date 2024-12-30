@@ -27,6 +27,10 @@ builder.Services.AddScoped<IMongoDatabase>(sp =>
 });
 
 // Repository ve Service'leri ekle
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+
+// Auth Service ve Repository Ekle
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 
